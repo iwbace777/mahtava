@@ -1,0 +1,53 @@
+#header {
+  background: transparent;
+  border-color: transparent;
+  padding-top: 20px;
+
+  > .container {
+    position: relative;
+  }
+
+  .navbar-nav > li {
+    margin-right: 10px;
+
+    > a {
+      background-color: $color-grey;
+      color: white;
+      padding: 4px 20px;
+      text-transform: uppercase;
+    }
+
+    &.active, &:hover {
+      > a {
+        background-color: $color-blue;
+      }
+    }
+  }
+
+  .navbar-brand {
+    padding: 0 15px;
+  }
+
+  .navbar-right {
+    margin-right: -10px;
+  }
+}
+
+#featured-boats {
+  background-color: white;
+  border: 1px solid $color-grey-light;
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 4rem;
+
+  > li {
+    cursor: pointer;
+    float: left;
+    padding: 15px 15px 0;
+  }
+
+  .boat-name {
+    color: $color-blue;
+  }
+}

@@ -1,0 +1,11 @@
+/*
+ *= require redactor-rails
+ */
+
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+.redactor_box {
+  display: inline-block;
+  width: calc(80% - 4px);
+}

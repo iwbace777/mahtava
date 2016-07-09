@@ -1,0 +1,18 @@
+#links.se-slope
+  .se-content
+    .container
+      .row
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            - @boats.each do |boat|
+              %li
+                = link_to boat_path(id: boat.slug) do
+                  = boat.name
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            %li
+              = link_to "/boats-for-sale" do
+                Approved Used
+            %li
+              = link_to "/contact" do
+                Contact

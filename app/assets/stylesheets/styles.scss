@@ -1,0 +1,30 @@
+@-webkit-viewport { width: device-width; }
+@-moz-viewport    { width: device-width; }
+@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }
+
+body {
+  color: black;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#footer {
+  background-color: white;
+  color: $color-grey-dark;
+  margin-top: 30px;
+  padding-top: 6rem;
+
+  .se-content {
+    background-color: white;
+  }
+
+  .footer-logo {
+    margin-top: -4rem;
+  }
+
+  .home-index &, .home-contact & {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,23 @@
+#contact {
+  background-color: $color-grey-light;
+  border-top: 2rem solid white;
+  -webkit-box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.5);
+  margin-top: -6rem;
+  margin-bottom: -6rem;
+  padding: 6rem 0 10rem;
+}
+
+.contact-container {
+  background-color: white;
+}
+
+@media screen and (min-width: $screen-lg-min) {
+  #contact { margin-top: -10rem; margin-bottom: -10rem; }
+}
+
+@media screen and (max-width: $screen-sm-min) {
+  #contact { margin-top: -2rem; margin-bottom: -6rem; }
+}

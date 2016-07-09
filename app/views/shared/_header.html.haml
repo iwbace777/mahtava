@@ -1,0 +1,29 @@
+%nav#header.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to root_path, class: 'navbar-brand' do
+        = image_tag 'logo.png', alt: 'Arvor'
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li(class="#{nav_class_for('home#index')}")
+          = link_to 'Home', root_path
+        %li
+          = link_to 'Arvor Range', '#', class: 'toggle-content', 'data-target' => '#featured-boats'
+        %li(class="#{nav_class_for('boats#index')}")
+          = link_to 'Approved Used', boats_path
+        /%li
+        /  = link_to 'Videos', 'javascript:void(0);'
+        %li(class="#{nav_class_for('home#contact')}")
+          = link_to 'Contact', contact_path
+
+    %ul#featured-boats.list-unstyled
+      - @featured_boats.each do |boat|
+        %li
+          = link_to boat_path(id: boat.slug) do
+            = image_tag boat.image, alt: boat.name, class: 'img-responsive'
+            %h4.boat-name= boat.name

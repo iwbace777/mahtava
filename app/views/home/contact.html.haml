@@ -1,0 +1,44 @@
+.se-container
+  #main-bg.se-slope
+    .se-content
+      = image_tag 'boat.jpg', alt: '', class: 'img-responsive'
+  .dummy.se-slope
+  #contact.se-slope
+    .se-content
+      .container
+        .contact-container
+          %h3.page-title Contact Us
+          .pad
+            .clearfix
+              .col-md-8.col-xs-12
+                .row
+                  .col-xs-12
+                    %p
+                      Welcome to Arvor UK.
+                      %br
+                      If you want to get answers and information about any of our products and services, get in touch with a Arvor Expert.
+                    %p We also welcome feedback, so if we've helped you resolve a problem or you aren't happy with the service you've received, let us know so we can put things right.
+                    %br
+                .row
+                  .col-xs-6
+                    %p
+                      Arvor UK
+                      %br
+                      Boats.co.uk
+                      %br
+                      Essex Marina
+                      %br
+                      Wallsea Island
+                      %br
+                      Essex SS4 2HF
+                  .col-xd-6
+                    %p
+                      T: 01702 258 885
+                      %br
+                      E: #{mail_to 'info@arvorboats.co.uk', 'info@arvorboats.co.uk'}
+                %br
+            .row
+              .col-xs-12
+                = image_tag 'marina.jpg', class: 'img-responsive'
+
+  = render 'shared/links'

@@ -1,0 +1,14 @@
+= simple_form_for Booking.new, html: { class: 'form-horizontal', 'data-parsley-validate' => true }, wrapper: :horizontal_form do |f|
+  .row
+    .row-same-height.row-full-height
+      .col-sm-10.col-xs-12.col-xs-height.col-full-height
+        .row
+          .col-md-9.col-md-offset-3.col-xs-12
+            %h5 Please fill in the below fields, and we will be in touch.
+        = f.input :name, input_html: { 'data-parsley-maxlength' => 50 }
+        = f.input :phone, input_html: { label: 'Tel', 'data-parsley-maxlength' => 50 }
+        = f.input :email, input_html: { 'data-parsley-maxlength' => 50 }
+        = f.input :message, input_html: { rows: 8 }
+
+      .col-sm-2.col-xs-12.col-xs-height.col-full-height
+        = f.submit 'Send', class: 'btn btn-flat'

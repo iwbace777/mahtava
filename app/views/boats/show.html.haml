@@ -1,0 +1,167 @@
+.container
+  .boat-detail
+    %h3.page-title #{@boat.name} - #{@boat.short_description}
+    .pad
+      %section
+        #gallery
+          - for i in 1..@boat.boat_image.count
+            %img{"data-src" => asset_path("#{ @boat.boat_image.folder_name}/#{ i }.jpg")}
+      %section
+        %h4.sub-title
+        = @boat.description.html_safe
+      %section
+        %h4.sub-title Safety
+        = @boat.safety.html_safe
+      %section
+        %h4.sub-title Fishing
+        = @boat.fishing.html_safe
+      %section
+        %h4.sub-title Comfort
+        = @boat.comfort.html_safe
+      %section
+        %h4.sub-title Storage
+        = @boat.storage.html_safe
+      %section
+        %h4.sub-title SPECIFICATIONS
+        .container
+          %table.table.table-striped.table-bordered
+            %tbody
+              %tr
+                %td(style="width:300px;") Engine
+                %td
+                  = @boat.boat_specifiction.engine.html_safe
+              %tr
+                %td Length overall (including platform)
+                %td
+                  = @boat.boat_specifiction.length_overall.html_safe
+              %tr
+                %td Length of Hull
+                %td
+                  = @boat.boat_specifiction.length_of_hull.html_safe
+              %tr
+                %td Beam
+                %td
+                  = @boat.boat_specifiction.beam.html_safe
+              %tr
+                %td Height - Without Canvas
+                %td
+                  = @boat.boat_specifiction.height_without_canvas.html_safe
+            %tbody
+              %tr
+                %td Draft
+                %td
+                  = @boat.boat_specifiction.draft.html_safe
+              %tr
+                %td Dry Weight
+                %td
+                  = @boat.boat_specifiction.dry_weight.html_safe
+              %tr
+                %td Fuel Capacity
+                %td
+                  = @boat.boat_specifiction.fuel_capacity.html_safe
+              %tr
+                %td CE Design Category
+                %td
+                  = @boat.boat_specifiction.ce_design_category.html_safe
+              %tr
+                %td Maximum Capacity
+                %td
+                  = @boat.boat_specifiction.maximum_capacity.html_safe
+            %tbody
+              %tr
+                %td Maximum Load (People, Gear)
+                %td
+                  = @boat.boat_specifiction.maximum_load.html_safe
+              %tr
+                %td Maximum Power
+                %td
+                  = @boat.boat_specifiction.maximum_power.html_safe
+              %tr
+                %td Water Tank
+                %td
+                  = @boat.boat_specifiction.water_tank.html_safe
+              %tr
+                %td Fuel tank max capacity
+                %td
+                  = @boat.boat_specifiction.fuel_tank_max_capacity.html_safe
+              %tr
+                %td Fuel Tank Type
+                %td
+                  = @boat.boat_specifiction.fuel_tank_type.html_safe
+      %section
+        .container
+          %table.table.table-striped.table-bordered
+            %tbody
+              %tr
+                %td(style="width:300px;") Hull & Deck
+                %td
+                  = @boat.boat_specifiction.hull_deck.html_safe
+              %tr
+                %td Cockpit
+                %td
+                  = @boat.boat_specifiction.cockpit.html_safe
+              %tr
+                %td Bow
+                %td
+                  = @boat.boat_specifiction.bow.html_safe
+              %tr
+                %td Helm
+                %td
+                  = @boat.boat_specifiction.helm.html_safe
+              %tr
+                %td Cabin
+                %td
+                  = @boat.boat_specifiction.cabin.html_safe
+              %tr
+                %td Galley
+                %td
+                  = @boat.boat_specifiction.galley.html_safe
+              %tr
+                %td Head Equipment
+                %td
+                  = @boat.boat_specifiction.head_equipment.html_safe
+      %section
+        %h4.sub-title PRICING
+        .container
+          %table.table.table-striped.table-bordered
+            %tbody
+              %tr
+                %td(style="width:300px;"){:rowspan => 2}
+                  = image_tag @boat.image, class: 'img-responsive',style: "display: block; margin-left: auto; margin-right: auto;"
+                %td
+                  = @boat.boat_price.item.html_safe
+              %tr
+                %td(style="background-color:#1dadea; color: white; padding-left:40px; font-size:1.7em; font-weight: bold;")
+                  = @boat.boat_price.price.html_safe
+
+#links.se-slope{:style => "margin-bottom: -30px;"}
+  .se-content
+    .container
+      .row
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            - @boats.each do |boat|
+              %li
+                = link_to boat_path(id: boat.slug) do
+                  = boat.name
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            %li
+              = link_to "/boats-for-sale" do
+                Approved Used
+            %li
+              = link_to "/contact" do
+                Contact
+:javascript
+
+  $(function() {
+      var p = $("#gallery").portfolio({
+        height: '300px', // gallery height
+        width: '100%', // gallery width in pixels or in percentage
+        logger: true
+
+      });
+
+      p.init();
+
+  }); // end of ready();

@@ -1,0 +1,36 @@
+- if true#cache "boat_#{boat['id']}", expires: 1.hour do
+  - slug = "#{boat['manufacturer'].downcase}-#{boat['model'].downcase}-#{boat['id']}"
+  - url = "http://www.boats.co.uk/boats-for-sale/#{slug}"
+  - image_url = "http://eby.rightboatexpert.com/api/images/#{boat['boat_image_id']}/450x450"
+  - price = boat['price']
+  - currency_name = boat['currency']
+  - source_currency = Currency.find_by(name: currency_name)
+
+  .boat.clearfix
+    .marketing-status(class="marketing-status-#{boat['marketing_status'].downcase.gsub(/\s+/, '')}")
+    .boat-detail.clearfix
+      .boat-image
+        = link_to image_url, 'data-lightbox' => slug do
+          = image_tag image_url, alt: ''
+      .boat-description
+        %h2 #{boat['year']} #{boat['manufacturer']} #{boat['model']}
+        %h2.price
+          = number_to_currency price, precision: 0, unit: source_currency.try(:symbol) || Currency.default.symbol
+          %small VAT #{boat['vat']}
+          %small Approx. #{price_in_euro(price, source_currency)}
+        %p
+          Located:
+          = image_tag "http://www.boats.co.uk/img/countries/#{boat['country_code'].downcase}.png", alt: boat['country_code']
+          #{boat['location']}, #{boat['country']}
+        %p Stock number: #{boat['stock_number']}
+        %p= boat['description'].html_safe
+        .boat-specs.clearfix
+          - if boat['new_used'] == 'new'
+            .boat-flags.boat-flag-new.popover-link{data: { toggle: 'popover', content: 'This means that this boat has never been sold to a registered keeper before. Typically this means that you will be the first owner and that you will receive all the benefits of a new boat namely : first owner, everything shiny and sparkly! , At least 1 year warranty on everything and 24 hour aftercare for your first year of ownership. The best bit about buying a new boat though is that you will have the latest technology and design and style in the marina ! Wow !', delay: '1000', html: 'true', 'original-title' => 'New Boat', trigger: 'hover', title: '', placement: 'top'} }
+          - else
+            .boat-flags.boat-flag-brokerage.popover-link{data: { toggle: 'popover', content: 'This means that Boats Ltd trading as Boats.co.uk (and our sister companies Princess East Coast, Princess Poole, Princess Cala dOr) are acting as agents in this sale for a third party owner. Typically brokerage boats will not include any warranty and will not allow part exchanges. We also recommend that all brokerage boats are surveyed and sea trailed (unless our sales staff advise otherwise). However we are careful about the boats we sell, so you can be reassured that if we have a boat for sale that we make our best efforts to ensure that the boat is worthy of our name.', delay: '1000', html: 'true', 'original-title' => 'Brokerage', trigger: 'hover', title: '', placement: 'top'} }
+          .boat-flags{class: "#{boat['boat_share'] > 0 ? 'boat-flag-equity popover-link' : 'boat-flag-equityoff' }", data: {toggle: 'popover', content: 'This boat can be sold in shares. Normally this would be upto a maximum of 4 owners (For the 1/4 share price - divide by 4!). The boat will have a fixed location. Please get in touch if you wish to know more.', delay: '1000', html: 'true' , trigger: 'hover', title: 'Boat Share', placement: 'top'} }
+          .boat-flags{class: "#{boat['part_exchange'] > 0 ? 'boat-flag-px popover-link' : 'boat-flag-pxoff'}", data: {toggle: 'popover', content: 'Put simply we will consider a part exchange of a boat, car or motorbike against this vessel. We are proud of our part exchanging and we are renowned for it ! So give us a try- you may be surprised!', delay: '1000', html: 'true' , trigger: 'hover', title: 'PX welcome', placement: 'top'} }
+          .boat-flags{class: "#{boat['warranty'] > 0 ? 'boat-flag-warranty popover-link' : 'boat-flag-warrantyoff'}", data: {toggle: 'popover', content: 'This means that this boat will have a warranty included. Used boats typically include a 3 month warranty on major engine and drivetrain  Gearbox failure. Please check our T&Cs for a full breakdown on what is covered.', delay: '1000', html: 'true' , trigger: 'hover', title: 'Warranty', placement: 'top'} }
+        %p
+        = link_to '', url, class: 'moreinfo'

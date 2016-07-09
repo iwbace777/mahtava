@@ -1,0 +1,142 @@
+
+.list-unstyled li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.list-unstyled li a:hover {
+  color: #222222;
+}
+.box {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.page-header {
+  color: $color-grey-dark;
+
+  h1 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .sorts {
+    padding-top: 4px;
+  }
+}
+
+.boat {
+  color: $color-grey-dark;
+  padding: 15px;
+  position: relative;
+
+  &:nth-child(odd) {
+    background-color: $color-grey-light;
+  }
+}
+
+.boat-image {
+  float: left;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.boat-description {
+  float: left;
+}
+
+.popover {
+  color: black;
+}
+
+.box .content {
+  border: 1px solid $color-grey;
+}
+
+.marketing-status {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 213px;
+  height: 131px;
+  z-index: 0;
+}
+
+.marketing-status-salepending {
+  background: image_url('salepending.png');
+}
+
+.boat-specs {
+  margin-right: -5px;
+}
+
+.popover-link {
+  cursor: pointer;
+}
+
+.boat-flags {
+  background: image_url('boatflags.jpg') no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  height: 50px;
+  width: 130px;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+.boat-flag-equity { background-position: 0px 0px; }
+.boat-flag-px { background-position: 0px -50px; }
+.boat-flag-warranty { background-position: 0px -100px; }
+.boat-flag-brokerage { background-position: 0px -150px; }
+.boat-flag-new { background-position: 0px -200px; }
+.boat-flag-equityoff { background-position: 0px -250px; }
+.boat-flag-share { background-position: 0px -500px;  }
+.boat-flag-pxoff { background-position: 0px -300px; }
+.boat-flag-warrantyoff { background-position: 0px -350px; }
+
+.moreinfo {
+  background: image_url('moreinfo.jpg');
+  display: inline-block;
+  width: 536px;
+  height: 50px;
+  border: 0px;
+}
+
+.boat-detail {
+  section {
+    margin-bottom: 2rem;
+  }
+
+  .sub-title {
+    color: rgb(199, 206, 53);
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: $screen-md-min) {
+  .boat-image img, .boat-image, .boat-description {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $screen-md-min) {
+  .boat-image {
+    padding-right: 25px;
+    width: -webkit-calc(100% - 536px);
+    width: calc(100% - 536px);
+  }
+
+  .boat-description {
+    width: 536px;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}

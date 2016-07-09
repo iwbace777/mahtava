@@ -1,0 +1,55 @@
+.container
+  .page-header.box
+    .content
+      .pad.clearfix
+        %h1
+          Search results
+          %small
+            = @boats.count
+            arvor boats for sale
+        .sorts.pull-right
+          .btn-group(role='group')
+            %a.btn.btn-default.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              Sort by #{session[:sort]}
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to 'price', boats_path(sort: 'price', order: session[:order])
+              %li= link_to 'relevancy', boats_path(sort: 'relevancy', order: session[:order])
+              %li= link_to 'manufacturer', boats_path(sort: 'manufacturer', order: session[:order])
+              %li= link_to 'year', boats_path(sort: 'year', order: session[:order])
+              %li= link_to 'arrival', boats_path(sort: 'arrival', order: session[:order])
+              %li= link_to 'smart', boats_path(sort: 'smart', order: session[:order])
+          .btn-group(role='group')
+            %a.btn.btn-default.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              Order #{session[:order] == 'desc' ? 'high to low' : 'low to high'}
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to 'low to high', boats_path(sort: session[:sort], order: 'asc')
+              %li= link_to 'high to low', boats_path(sort: session[:sort], order: 'desc')
+
+  .box
+    .boats.content
+      - if @boats.any?
+        - @boats.each do |boat|
+          = render 'boat', boat: boat
+      - else
+        %p No boats yet.
+
+#links.se-slope{:style => "margin-bottom: -30px;"}
+  .se-content
+    .container
+      .row
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            - @boats_all.each do |boat|
+              %li
+                = link_to boat_path(id: boat.slug) do
+                  = boat.name
+        .col-xs-6.col-md-3
+          %ul.list-unstyled
+            %li
+              = link_to "/boats-for-sale" do
+                Approved Used
+            %li
+              = link_to "/contact" do
+                Contact
